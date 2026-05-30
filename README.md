@@ -5,7 +5,7 @@ A folder-based AI researcher for fiction authors. Drop it into a Claude Project 
 This is not a summarizer. It will not recap your chapter back to you. It will ask hard questions, flag inconsistencies, and protect your credibility before a reader or critic does it for you.
 
 ## Live Demo
-Try it here: [your Cloudflare URL]
+Try it here: https://optimarketai-arch.github.io/narrative-research-specialist
 
 ## Folder Structure
 
