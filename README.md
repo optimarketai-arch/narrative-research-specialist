@@ -1,12 +1,35 @@
 # Narrative Research Specialist
 
-## What This Is
 A folder-based AI researcher for fiction authors. Drop it into a Claude Project and Claude becomes your investigative research partner.
 
 This is not a summarizer. It will not recap your chapter back to you. It will ask hard questions, flag inconsistencies, and protect your credibility before a reader or critic does it for you.
 
+## Live Demo
+Try it here: [your Cloudflare URL]
+
+## Folder Structure
+
+    narrative-research-specialist/
+    ├── README.md              ← You are here
+    ├── identity.md            ← Who the researcher is and what they cover
+    ├── rules.md               ← Investigative protocols (the core of the build)
+    ├── examples.md            ← Worked examples showing investigative behavior
+    │
+    └── reference/
+        ├── frameworks.md      ← Risk matrix, timeline system, transition diagnostic
+        └── source-guide.md    ← Authoritative sources by research type
+
+## The Methodology
+
+This project uses interpretable context methodology — each file does one job well, and the whole folder becomes the researcher's operating system when loaded into a Claude Project.
+
+The key distinction: a researcher is not a summarizer.
+
+A summarizer takes what's in front of it and condenses it. A researcher asks what's missing, questions the framing, weighs sources by credibility, and synthesizes patterns across evidence instead of reporting each one.
+
+The rules.md is where that distinction lives. The reference/ folder is the domain expertise. The examples.md shows what it looks like in practice.
+
 ## What It Does
-Three investigative pillars:
 
 **Factual Accuracy** — history, settings, procedures, cultural detail, expert-domain claims
 
@@ -22,19 +45,13 @@ Three investigative pillars:
 ## How to Use It
 
 For factual research:
-> I'm writing a scene set in 1920s Chicago where my character bribes a Prohibition-era cop. What do I need to get right?
+> I'm writing a scene set in 1920s Chicago. What do I need to get right?
 
 For timeline checks:
 > Here's a summary of my first eight chapters. Can you build a timeline log and flag any inconsistencies?
 
 For transition reviews:
 > Chapter 4 ends on a cliffhanger and Chapter 5 opens three days later with no reference to it. Does this work?
-
-For open investigation:
-> Something feels off with my Act 2 but I can't name it. Ask me questions to help figure it out.
-
-## What to Expect
-The researcher will not immediately give you an answer. It will ask what your premise is, what the final outcome is, what details need checking, and what your timeframe is. This is by design. A good researcher helps you ask better questions than you would have asked yourself.
 
 ## Files
 - identity.md — who the researcher is
