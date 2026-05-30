@@ -20,34 +20,19 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; }
-
-  header {
-    padding: 3rem 2rem 2rem;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-    background: var(--paper);
-    position: relative;
-  }
-  header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
-  }
+  header { padding: 3rem 2rem 2rem; text-align: center; border-bottom: 1px solid var(--border); background: var(--paper); position: relative; }
+  header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent)); }
   .eyebrow { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 1rem; }
   h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 600; line-height: 1.15; color: var(--ink); margin-bottom: 1rem; }
   h1 em { font-style: italic; color: var(--accent); }
   .tagline { font-size: 1.1rem; color: var(--muted); max-width: 520px; margin: 0 auto 1.5rem; line-height: 1.6; font-weight: 300; }
   .github-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); text-decoration: none; border: 1px solid var(--border); padding: 6px 14px; border-radius: 20px; transition: all 0.2s; }
   .github-link:hover { border-color: var(--accent-light); color: var(--accent); }
-
   .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .pillar { background: var(--paper); padding: 1.5rem; text-align: center; }
   .pillar-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
   .pillar h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
   .pillar p { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
   .comparison-section { padding: 3rem 1.5rem; border-bottom: 1px solid var(--border); background: var(--paper-warm); }
   .comparison-inner { max-width: 900px; margin: 0 auto; }
   .section-eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.5rem; }
@@ -79,16 +64,58 @@
   .compare-btn.run:hover { background: var(--accent); border-color: var(--accent); }
   .compare-btn.reset { background: transparent; color: var(--muted); }
   .compare-btn.reset:hover { color: var(--ink); border-color: var(--ink); }
-
+  .animated-section { padding: 3rem 1.5rem; border-bottom: 1px solid var(--border); background: var(--paper); }
+  .animated-inner { max-width: 760px; margin: 0 auto; }
+  .scenario-badge { display: inline-block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; padding: 4px 12px; border-radius: 20px; margin-bottom: 1rem; background: var(--paper-warm); color: var(--accent); border: 1px solid var(--border); }
+  .anim-chat { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .anim-header { padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--paper-warm); display: flex; align-items: center; gap: 10px; }
+  .anim-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 11px; color: white; font-weight: 500; }
+  .anim-header span { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .anim-status { width: 7px; height: 7px; border-radius: 50%; background: #4caf50; margin-left: auto; }
+  .anim-messages { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; min-height: 300px; }
+  .anim-message { display: flex; gap: 10px; align-items: flex-start; opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
+  .anim-message.visible { opacity: 1; transform: translateY(0); }
+  .anim-message.user { flex-direction: row-reverse; }
+  .anim-msg-avatar { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; flex-shrink: 0; margin-top: 2px; }
+  .anim-message.user .anim-msg-avatar { background: var(--user-bubble); color: white; }
+  .anim-message.ai .anim-msg-avatar { background: var(--accent); color: white; }
+  .anim-bubble { padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.6; max-width: 88%; }
+  .anim-message.user .anim-bubble { background: var(--user-bubble); color: #f5f0e8; border-bottom-right-radius: 4px; }
+  .anim-message.ai .anim-bubble { background: var(--ai-bubble); color: var(--ink); border-bottom-left-radius: 4px; }
+  .anim-bubble strong { font-weight: 500; color: var(--accent); }
+  .anim-input-area { padding: 12px; border-top: 1px solid var(--border); background: var(--paper); display: flex; gap: 8px; align-items: center; }
+  .anim-input-display { flex: 1; font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: white; color: var(--ink); min-height: 42px; line-height: 1.5; }
+  .anim-cursor { display: inline-block; width: 2px; height: 16px; background: var(--accent); margin-left: 1px; vertical-align: middle; animation: blink 0.8s infinite; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  .anim-send { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 10px 18px; background: var(--ink); color: var(--paper); border: none; border-radius: 8px; opacity: 0.4; white-space: nowrap; }
+  .anim-send.ready { opacity: 1; }
+  .anim-typing { display: flex; gap: 4px; padding: 4px 0; }
+  .anim-typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: bounce 1.2s infinite; }
+  .anim-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .anim-typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-5px); } }
+  .scenario-nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 1rem; }
+  .scenario-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s; }
+  .scenario-dot.active { background: var(--accent); }
+  .key-section { background: var(--paper-warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
+  .key-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+  .key-inner h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+  .key-inner p { font-size: 13px; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.7; }
+  .key-inner p a { color: var(--accent); text-decoration: none; }
+  .key-row { display: flex; gap: 8px; max-width: 480px; margin: 0 auto 0.5rem; }
+  .key-row input { flex: 1; font-family: 'DM Sans', sans-serif; font-size: 13px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; outline: none; background: white; color: var(--ink); }
+  .key-row button { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 10px 18px; background: var(--ink); color: var(--paper); border: none; border-radius: 8px; cursor: pointer; }
+  .key-row button:hover { background: var(--accent); }
+  #key-status { font-size: 12px; min-height: 18px; margin-top: 4px; }
   .demo-section { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem; }
   .demo-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
   .demo-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .scenario-tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
-  .tab-btn { font-family: 'DM Sans', sans-serif; font-size: 13px; padding: 7px 16px; border: 1px solid var(--border); background: var(--paper); color: var(--muted); border-radius: 20px; cursor: pointer; transition: all 0.2s; font-weight: 400; }
+  .tab-btn { font-family: 'DM Sans', sans-serif; font-size: 13px; padding: 7px 16px; border: 1px solid var(--border); background: var(--paper); color: var(--muted); border-radius: 20px; cursor: pointer; transition: all 0.2s; }
   .tab-btn:hover, .tab-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
   .chat-window { background: var(--chat-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; }
   .chat-header { padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--paper-warm); display: flex; align-items: center; gap: 10px; }
-  .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 11px; color: white; font-weight: 500; flex-shrink: 0; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 11px; color: white; font-weight: 500; }
   .chat-header span { font-size: 13px; font-weight: 500; color: var(--ink); }
   .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #4caf50; margin-left: auto; }
   .messages { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; min-height: 280px; max-height: 420px; overflow-y: auto; }
@@ -106,19 +133,16 @@
   .typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: bounce 1.2s infinite; }
   .typing span:nth-child(2) { animation-delay: 0.2s; }
   .typing span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
   .input-area { padding: 12px; border-top: 1px solid var(--border); display: flex; gap: 8px; background: var(--paper); }
-  #user-input { flex: 1; font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: white; color: var(--ink); resize: none; outline: none; transition: border-color 0.2s; line-height: 1.5; }
-  #user-input:focus { border-color: var(--accent-light); }
+  #user-input { flex: 1; font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: white; color: var(--ink); resize: none; outline: none; line-height: 1.5; }
   #user-input::placeholder { color: var(--muted); }
-  #send-btn { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 10px 18px; background: var(--ink); color: var(--paper); border: none; border-radius: 8px; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+  #send-btn { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 10px 18px; background: var(--ink); color: var(--paper); border: none; border-radius: 8px; cursor: pointer; white-space: nowrap; }
   #send-btn:hover { background: var(--accent); }
   #send-btn:disabled { background: var(--border); cursor: not-allowed; }
   .quick-prompts { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; }
   .quick-btn { font-family: 'DM Sans', sans-serif; font-size: 13px; padding: 10px 16px; border: 1px solid var(--border); background: var(--paper-warm); color: var(--muted); border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: left; line-height: 1.5; flex: 1; min-width: 200px; }
   .quick-btn:hover { border-color: var(--accent-light); color: var(--accent); background: white; }
   .quick-btn strong { display: block; font-weight: 500; color: var(--ink); margin-bottom: 3px; font-size: 13px; }
-
   footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); }
   footer a { color: var(--accent); text-decoration: none; }
 </style>
@@ -136,21 +160,9 @@
 </header>
 
 <div class="pillars">
-  <div class="pillar">
-    <span class="pillar-icon">📚</span>
-    <h3>Factual Accuracy</h3>
-    <p>History, settings, procedures, cultural detail — verified by credibility tier</p>
-  </div>
-  <div class="pillar">
-    <span class="pillar-icon">🕰️</span>
-    <h3>Timeline Integrity</h3>
-    <p>Chronology, character ages, cause-and-effect sequencing across your manuscript</p>
-  </div>
-  <div class="pillar">
-    <span class="pillar-icon">📖</span>
-    <h3>Chapter Transitions</h3>
-    <p>Emotional continuity, pacing gear shifts, orientation and information handoff</p>
-  </div>
+  <div class="pillar"><span class="pillar-icon">📚</span><h3>Factual Accuracy</h3><p>History, settings, procedures, cultural detail — verified by credibility tier</p></div>
+  <div class="pillar"><span class="pillar-icon">🕰️</span><h3>Timeline Integrity</h3><p>Chronology, character ages, cause-and-effect sequencing across your manuscript</p></div>
+  <div class="pillar"><span class="pillar-icon">📖</span><h3>Chapter Transitions</h3><p>Emotional continuity, pacing gear shifts, orientation and information handoff</p></div>
 </div>
 
 <div class="comparison-section">
@@ -191,16 +203,51 @@
   </div>
 </div>
 
-<div class="demo-section">
-  <div class="demo-label">Try it live</div>
+<div class="animated-section">
+  <div class="animated-inner">
+    <p class="section-eyebrow">See it in action</p>
+    <h2 class="section-title">A researcher that <em>asks first</em></h2>
+    <p class="section-sub" style="margin-bottom: 1.5rem;">Watch how the Narrative Research Specialist works with a real manuscript question.</p>
+    <div id="scenario-badge" class="scenario-badge">Scenario 1 of 2 — Historical Detail</div>
+    <div class="anim-chat">
+      <div class="anim-header">
+        <div class="anim-avatar">NR</div>
+        <span>Narrative Research Specialist</span>
+        <div class="anim-status"></div>
+      </div>
+      <div class="anim-messages" id="anim-messages"></div>
+      <div class="anim-input-area">
+        <div class="anim-input-display" id="anim-input-display"><span class="anim-cursor"></span></div>
+        <div class="anim-send" id="anim-send-btn">Send</div>
+      </div>
+    </div>
+    <div class="scenario-nav">
+      <div class="scenario-dot active" id="dot-0" onclick="jumpScenario(0)"></div>
+      <div class="scenario-dot" id="dot-1" onclick="jumpScenario(1)"></div>
+    </div>
+  </div>
+</div>
 
+<div class="key-section">
+  <div class="key-inner">
+    <h3>Try it yourself — free</h3>
+    <p>The live chat below uses the Claude API. Get a free API key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a> — new accounts include $5 in free credits, no credit card required. Paste your key below to activate the chat.</p>
+    <div class="key-row">
+      <input type="password" id="api-key-input" placeholder="Paste your Anthropic API key (sk-ant-...)">
+      <button onclick="saveKey()">Activate</button>
+    </div>
+    <p id="key-status"></p>
+  </div>
+</div>
+
+<div class="demo-section">
+  <div class="demo-label">Your turn</div>
   <div class="scenario-tabs">
     <button class="tab-btn active" onclick="setScenario('factual', this)">Factual check</button>
     <button class="tab-btn" onclick="setScenario('timeline', this)">Timeline review</button>
     <button class="tab-btn" onclick="setScenario('transition', this)">Scene transition</button>
     <button class="tab-btn" onclick="setScenario('open', this)">Open investigation</button>
   </div>
-
   <div class="chat-window">
     <div class="chat-header">
       <div class="avatar">NR</div>
@@ -218,47 +265,30 @@
       <button id="send-btn" onclick="sendMessage()">Send</button>
     </div>
   </div>
-
   <div class="quick-prompts">
-    <button class="quick-btn" onclick="fillPrompt('I need to verify a detail in my story. Can you help me check if it is accurate for the period and setting?')">
-      <strong>Check a historical detail</strong>
-      Any era, any topic — let\'s verify it
-    </button>
-    <button class="quick-btn" onclick="fillPrompt('I want to make sure my story\'s timeline holds together across chapters. Where do we start?')">
-      <strong>Review my timeline</strong>
-      Catch inconsistencies before readers do
-    </button>
-    <button class="quick-btn" onclick="fillPrompt('I have a scene transition that might not be working. Can you help me figure out why?')">
-      <strong>Diagnose a transition</strong>
-      Between any two scenes or chapters
-    </button>
-    <button class="quick-btn" onclick="fillPrompt('Something in my manuscript isn\'t working but I cannot name what it is. Can you ask me questions to help find it?')">
-      <strong>Something feels off</strong>
-      Open investigation — let\'s find it
-    </button>
+    <button class="quick-btn" onclick="fillPrompt('I need to verify a detail in my story. Can you help me check if it is accurate for the period and setting?')"><strong>Check a historical detail</strong>Any era, any topic — let us verify it</button>
+    <button class="quick-btn" onclick="fillPrompt('I want to make sure my story timeline holds together across chapters. Where do we start?')"><strong>Review my timeline</strong>Catch inconsistencies before readers do</button>
+    <button class="quick-btn" onclick="fillPrompt('I have a scene transition that might not be working. Can you help me figure out why?')"><strong>Diagnose a transition</strong>Between any two scenes or chapters</button>
+    <button class="quick-btn" onclick="fillPrompt('Something in my manuscript is not working but I cannot name what it is. Can you ask me questions to help find it?')"><strong>Something feels off</strong>Open investigation — let us find it</button>
   </div>
 </div>
 
 <footer>
   Built for the Lyceum Weekly Competition #6 · <a href="https://github.com/optimarketai-arch/narrative-research-specialist" target="_blank">GitHub repo</a> · Free to use and adapt
 </footer>
-
 <script>
 const SYSTEM_PROMPT = `You are a Narrative Research Specialist — an investigative research partner for fiction authors.
-
 Your three pillars:
 1. FACTUAL ACCURACY — investigate history, settings, procedures, cultural detail. Flag credibility tiers.
 2. TIMELINE INTEGRITY — track chronology, character ages, cause-and-effect. Surface conflicts explicitly.
 3. TRANSITIONS — diagnose chapter/scene flow: orientation, emotional continuity, pacing, information handoff.
-
 RULES:
 - You are NOT a summarizer. Never recap what the author gives you.
 - Always open by asking: What is the premise? What is the final outcome? What details need checking? What is the timeframe?
 - But if the author has already given you enough context, investigate directly.
 - When you find a conflict or risk, name it specifically.
-- Flag source credibility tiers when relevant: Tier 1 (primary/peer-reviewed), Tier 2 (expert nonfiction), Tier 3 (general reference), Tier 4 (unverified).
-- If there is a timeline conflict, show both data points and ask which is authoritative.
-- Keep responses focused and investigative. Ask one sharp follow-up question at the end when appropriate.`;
+- Flag source credibility tiers when relevant.
+- Keep responses focused and investigative. Ask one sharp follow-up question at the end.`;
 
 const scenarios = {
   factual: "I need to verify a detail in my story. Can you help me check if it is accurate for the period and setting?",
@@ -267,91 +297,164 @@ const scenarios = {
   open: "Something in my manuscript isn't working but I cannot name what it is. Can you ask me questions to help find it?"
 };
 
+const animScenarios = [
+  {
+    badge: "Scenario 1 of 2 — Historical Detail",
+    userMsg: "My story is set in 1920s Chicago. My protagonist sends a telegram to New York and gets a reply the same afternoon. Is this realistic?",
+    aiMsg: "Before I answer — a few things will determine whether this holds up.\n\nWhat time does she send the telegram? Is the New York recipient at a home address, a hotel, or a business office? And how plot-critical is the same-afternoon reply?\n\nHere is what I can tell you: by the 1920s, Western Union intercity transmission was fast — often minutes between cities. <strong>Delivery is your real constraint, not transmission.</strong> A messenger boy had to physically deliver it. Business address before noon — you are on solid ground. Private residence late in the day — a careful reader may raise an eyebrow.\n\nWhat is the setting of the recipient's end?"
+  },
+  {
+    badge: "Scenario 2 of 2 — Timeline Conflict",
+    userMsg: "My character Elena is 34 in Chapter 1, set in 1987. In Chapter 9, set in 1992, her sister says Elena was born in 1951. Does this work?",
+    aiMsg: "I have found a timeline conflict that needs resolving.\n\n<strong>The numbers do not match.</strong> If Elena is 34 in 1987, she was born in 1952 or 1953. But Chapter 9 has her sister saying 1951 — that would make her 36 in 1987, not 34.\n\nThat is a two-year discrepancy. Small enough that many readers won't catch it, but exactly the kind of detail a careful reviewer will flag.\n\nWhich is authoritative — the age in Chapter 1, or the birth year the sister gives in Chapter 9?"
+  }
+];
+
+let currentAnimScenario = 0;
+let animRunning = false;
+
+function jumpScenario(idx) {
+  if (animRunning) return;
+  currentAnimScenario = idx;
+  runAnimScenario();
+}
+
+function runAnimScenario() {
+  const s = animScenarios[currentAnimScenario];
+  const container = document.getElementById('anim-messages');
+  const inputDisplay = document.getElementById('anim-input-display');
+  const sendBtn = document.getElementById('anim-send-btn');
+  const badge = document.getElementById('scenario-badge');
+  container.innerHTML = '';
+  inputDisplay.innerHTML = '<span class="anim-cursor"></span>';
+  sendBtn.classList.remove('ready');
+  badge.textContent = s.badge;
+  document.querySelectorAll('.scenario-dot').forEach((d, i) => d.classList.toggle('active', i === currentAnimScenario));
+  animRunning = true;
+  let typed = '';
+  let charIdx = 0;
+  const typeInterval = setInterval(() => {
+    if (charIdx < s.userMsg.length) {
+      typed += s.userMsg[charIdx];
+      inputDisplay.innerHTML = typed + '<span class="anim-cursor"></span>';
+      charIdx++;
+    } else {
+      clearInterval(typeInterval);
+      sendBtn.classList.add('ready');
+      setTimeout(() => {
+        inputDisplay.innerHTML = '<span class="anim-cursor"></span>';
+        sendBtn.classList.remove('ready');
+        const userDiv = document.createElement('div');
+        userDiv.className = 'anim-message user';
+        userDiv.innerHTML = '<div class="anim-msg-avatar">You</div><div class="anim-bubble">' + s.userMsg + '</div>';
+        container.appendChild(userDiv);
+        setTimeout(() => userDiv.classList.add('visible'), 50);
+        setTimeout(() => {
+          const typingDiv = document.createElement('div');
+          typingDiv.className = 'anim-message ai visible';
+          typingDiv.id = 'anim-typing';
+          typingDiv.innerHTML = '<div class="anim-msg-avatar">NR</div><div class="anim-bubble"><div class="anim-typing"><span></span><span></span><span></span></div></div>';
+          container.appendChild(typingDiv);
+          setTimeout(() => {
+            typingDiv.remove();
+            const aiDiv = document.createElement('div');
+            aiDiv.className = 'anim-message ai';
+            aiDiv.innerHTML = '<div class="anim-msg-avatar">NR</div><div class="anim-bubble">' + s.aiMsg.replace(/\n/g, '<br>') + '</div>';
+            container.appendChild(aiDiv);
+            setTimeout(() => aiDiv.classList.add('visible'), 50);
+            animRunning = false;
+            setTimeout(() => {
+              currentAnimScenario = (currentAnimScenario + 1) % animScenarios.length;
+              runAnimScenario();
+            }, 6000);
+          }, 2200);
+        }, 800);
+      }, 600);
+    }
+  }, 28);
+}
+
+window.addEventListener('load', () => setTimeout(runAnimScenario, 1000));
+
+function runComparison() {
+  const badEl = document.getElementById('bad-response');
+  const goodEl = document.getElementById('good-response');
+  const goodLabel = document.getElementById('good-label');
+  badEl.innerHTML = '<p style="color:var(--muted);font-style:italic;">Processing...</p>';
+  goodEl.innerHTML = '<p style="color:var(--muted);font-style:italic;">Analyzing...</p>';
+  goodLabel.textContent = 'Investigating';
+  setTimeout(() => { badEl.innerHTML = '<p>The transition shows a significant emotional shift. The protagonist goes from receiving devastating news to resuming her normal routine the following morning.</p><p>This kind of contrast can be effective in fiction, showing the character\'s resilience or compartmentalization.</p>'; }, 800);
+  setTimeout(() => {
+    goodLabel.textContent = 'Before I answer';
+    goodEl.innerHTML = '<p>This can work — but I need to know if it\'s <strong>intentional or a gap</strong>.</p><p>Is her "acting normal" meant to signal dissociation, suppression, or professional obligation? Does Chapter 8 eventually crack? What\'s the POV?</p><p>Here\'s the risk: if readers are in her head and feel nothing, they\'ll read it as a <strong>dropped thread, not a controlled choice</strong>. You need one signal — a physical sensation, a distracted moment, something she pushes away.</p><p>Share the first paragraph of Chapter 8 and I\'ll tell you if the signal is there.</p>';
+  }, 1800);
+}
+
+function resetComparison() {
+  document.getElementById('bad-response').innerHTML = '<p>The transition shows a significant emotional shift. The protagonist goes from receiving devastating news to resuming her normal routine the following morning.</p><p>This kind of contrast can be effective in fiction, showing the character\'s resilience or compartmentalization. The juxtaposition between grief and routine is a recognizable literary technique.</p>';
+  document.getElementById('good-response').innerHTML = '<p>This can work — but I need to know if it\'s <strong>intentional or a gap</strong>.</p><p>Is her "acting normal" meant to signal dissociation, suppression, or professional obligation — or is it just how the scene opens before grief surfaces? Does Chapter 8 eventually crack? What\'s the POV?</p><p>Here\'s the risk: if readers are in her head and feel nothing in the opening, they\'ll read it as a <strong>dropped thread, not a controlled choice</strong>. You need one signal — a physical sensation, a distracted moment, something she pushes away.</p><p>Share the first paragraph of Chapter 8 and I\'ll tell you if the signal is there.</p>';
+  document.getElementById('good-label').textContent = 'Before I answer';
+}
+
+let userApiKey = '';
+function saveKey() {
+  const val = document.getElementById('api-key-input').value.trim();
+  const status = document.getElementById('key-status');
+  if (!val.startsWith('sk-ant-')) {
+    status.textContent = 'That does not look right — Anthropic keys start with sk-ant-';
+    status.style.color = '#c4614a';
+    return;
+  }
+  userApiKey = val;
+  document.getElementById('api-key-input').value = '';
+  status.textContent = '✓ Key saved — live chat is ready below';
+  status.style.color = '#4a8c4a';
+}
+
 function setScenario(key, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('user-input').value = scenarios[key];
 }
-
 function fillPrompt(text) {
   document.getElementById('user-input').value = text;
   document.getElementById('user-input').focus();
 }
 
 let conversationHistory = [];
-let comparisonRunning = false;
-
-function runComparison() {
-  if (comparisonRunning) return;
-  comparisonRunning = true;
-  const badEl = document.getElementById('bad-response');
-  const goodEl = document.getElementById('good-response');
-  const goodLabel = document.getElementById('good-label');
-  badEl.innerHTML = '<p style="color: var(--muted); font-style: italic;">Processing...</p>';
-  goodEl.innerHTML = '<p style="color: var(--muted); font-style: italic;">Analyzing...</p>';
-  goodLabel.textContent = 'Investigating';
-  setTimeout(() => {
-    badEl.innerHTML = '<p>The transition shows a significant emotional shift. The protagonist goes from receiving devastating news to resuming her normal routine the following morning.</p><p>This kind of contrast can be effective in fiction, showing the character\'s resilience or compartmentalization. The juxtaposition between grief and routine is a recognizable literary technique.</p>';
-  }, 800);
-  setTimeout(() => {
-    goodLabel.textContent = 'Before I answer';
-    goodEl.innerHTML = '<p>This can work — but I need to know if it\'s <strong>intentional or a gap</strong>.</p><p>Is her "acting normal" meant to signal dissociation, suppression, or professional obligation — or is it just how the scene opens before grief surfaces? Does Chapter 8 eventually crack? What\'s the POV?</p><p>Here\'s the risk: if readers are in her head and feel nothing in the opening, they\'ll read it as a <strong>dropped thread, not a controlled choice</strong>. You need one signal — a physical sensation, a distracted moment, something she pushes away.</p><p>Share the first paragraph of Chapter 8 and I\'ll tell you if the signal is there.</p>';
-    comparisonRunning = false;
-  }, 1800);
-}
-
-function resetComparison() {
-  comparisonRunning = false;
-  document.getElementById('bad-response').innerHTML = '<p>The transition shows a significant emotional shift. The protagonist goes from receiving devastating news to resuming her normal routine the following morning.</p><p>This kind of contrast can be effective in fiction, showing the character\'s resilience or compartmentalization. The juxtaposition between grief and routine is a recognizable literary technique.</p>';
-  document.getElementById('good-response').innerHTML = '<p>This can work — but I need to know if it\'s <strong>intentional or a gap</strong>.</p><p>Is her "acting normal" meant to signal dissociation, suppression, or professional obligation — or is it just how the scene opens before grief surfaces? Does Chapter 8 eventually crack? What\'s the POV?</p><p>Here\'s the risk: if readers are in her head and feel nothing in the opening, they\'ll read it as a <strong>dropped thread, not a controlled choice</strong>. You need one signal — a physical sensation, a distracted moment, something she pushes away.</p><p>Share the first paragraph of Chapter 8 and I\'ll tell you if the signal is there.</p>';
-  document.getElementById('good-label').textContent = 'Before I answer';
-}
 
 function addMessage(role, text) {
   const msgs = document.getElementById('messages');
   const div = document.createElement('div');
   div.className = 'message ' + (role === 'user' ? 'user' : 'ai');
-  const initials = role === 'user' ? 'You' : 'NR';
-  div.innerHTML = '<div class="msg-avatar">' + initials + '</div><div class="bubble">' + text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>') + '</div>';
+  div.innerHTML = '<div class="msg-avatar">' + (role === 'user' ? 'You' : 'NR') + '</div><div class="bubble">' + text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>') + '</div>';
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
 }
-
 function showTyping() {
   const msgs = document.getElementById('messages');
   const div = document.createElement('div');
-  div.className = 'message ai';
-  div.id = 'typing-indicator';
+  div.className = 'message ai'; div.id = 'typing-indicator';
   div.innerHTML = '<div class="msg-avatar">NR</div><div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>';
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
+  msgs.appendChild(div); msgs.scrollTop = msgs.scrollHeight;
 }
-
-function removeTyping() {
-  const el = document.getElementById('typing-indicator');
-  if (el) el.remove();
-}
+function removeTyping() { const el = document.getElementById('typing-indicator'); if (el) el.remove(); }
 
 async function sendMessage() {
   const input = document.getElementById('user-input');
   const btn = document.getElementById('send-btn');
   const text = input.value.trim();
   if (!text) return;
-  input.value = '';
-  btn.disabled = true;
+  if (!userApiKey) { addMessage('ai', 'Please enter your Anthropic API key in the section above to use the live chat.'); return; }
+  input.value = ''; btn.disabled = true;
   addMessage('user', text);
   conversationHistory.push({ role: 'user', content: text });
   showTyping();
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: SYSTEM_PROMPT,
-        messages: conversationHistory
-      })
+      headers: { 'Content-Type': 'application/json', 'x-api-key': userApiKey, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 1000, system: SYSTEM_PROMPT, messages: conversationHistory })
     });
     const data = await response.json();
     removeTyping();
@@ -359,17 +462,10 @@ async function sendMessage() {
       const reply = data.content[0].text;
       conversationHistory.push({ role: 'assistant', content: reply });
       addMessage('ai', reply);
-    } else {
-      addMessage('ai', 'Something went wrong. Please try again.');
-    }
-  } catch (err) {
-    removeTyping();
-    addMessage('ai', 'Connection error. Please try again.');
-  }
-  btn.disabled = false;
-  input.focus();
+    } else { addMessage('ai', 'Something went wrong. Please try again.'); }
+  } catch (err) { removeTyping(); addMessage('ai', 'Connection error. Please try again.'); }
+  btn.disabled = false; input.focus();
 }
-
 document.getElementById('user-input').addEventListener('keydown', function(e) {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
 });
