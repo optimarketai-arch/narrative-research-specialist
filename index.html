@@ -248,7 +248,11 @@
     <button class="tab-btn" onclick="setScenario('timeline', this)">Timeline review</button>
     <button class="tab-btn" onclick="setScenario('transition', this)">Scene transition</button>
     <button class="tab-btn" onclick="setScenario('open', this)">Open investigation</button>
-  </div>
+    </div>
+    <div style="background: var(--paper-warm); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 13px; color: var(--ink); line-height: 1.6;">
+    <strong style="display: block; margin-bottom: 0.4rem;">How to use this:</strong>
+  Paste a section of your manuscript into the chat box below. Then ask a specific question about it — or click one of the prompts below. The researcher reads your actual text and investigates it.
+</div>
   <div class="chat-window">
     <div class="chat-header">
       <div class="avatar">NR</div>
@@ -266,6 +270,7 @@
       <button id="send-btn" onclick="sendMessage()">Send</button>
     </div>
   </div>
+    <p style="font-size: 12px; color: var(--muted); margin-bottom: 0.75rem;">Not sure where to start? Click a prompt below — then paste your manuscript text in the chat box above.</p>
   <div class="quick-prompts">
     <button class="quick-btn" onclick="fillPrompt('I need to verify a detail in my story. Can you help me check if it is accurate for the period and setting?')"><strong>Check a historical detail</strong>Any era, any topic — let us verify it</button>
     <button class="quick-btn" onclick="fillPrompt('I want to make sure my story timeline holds together across chapters. Where do we start?')"><strong>Review my timeline</strong>Catch inconsistencies before readers do</button>
