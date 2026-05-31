@@ -228,18 +228,6 @@
   </div>
 </div>
 
-<div class="key-section">
-  <div class="key-inner">
-    <h3>Try it yourself — free</h3>
-    <p>The live chat below uses the Claude API. Get a free API key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a> — new accounts include $5 in free credits, no credit card required. Paste your key below to activate the chat.</p>
-    <div class="key-row">
-      <input type="password" id="api-key-input" placeholder="Paste your Anthropic API key (sk-ant-...)">
-      <button onclick="saveKey()">Activate</button>
-    </div>
-    <p id="key-status"></p>
-    <p style="font-size: 11px; color: var(--muted); margin-top: 0.5rem;">Your key is never stored or shared. It lives in your browser session only.</p>
-  </div>
-</div>
 
 <div class="demo-section">
   <div class="demo-label">Your turn</div>
@@ -452,7 +440,6 @@ async function sendMessage() {
   const btn = document.getElementById('send-btn');
   const text = input.value.trim();
   if (!text) return;
-  if (!userApiKey) { addMessage('ai', 'Please enter your Anthropic API key in the section above to use the live chat.'); return; }
   input.value = ''; btn.disabled = true;
   addMessage('user', text);
   conversationHistory.push({ role: 'user', content: text });
